@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Legends Hub</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1c1c1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: #2d2d2f;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #f39c12;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        header {
+            background: url('https://img.freepik.com/free-photo/empty-soccer-stadium-with-dreamy-fantasy-view-sky_23-2151563091.jpg?ga=GA1.1.682614301.1727413531&semt=ais_hybrid') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Player Profiles Section */
+        .player-card {
+            width: 22%;
+            display: inline-block;
+            background-color: #292929;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 1%;
+            vertical-align: top;
+            box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 30px rgba(243, 156, 18, 1);
+        }
+
+        .player-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .player-card h3 {
+            padding: 15px;
+            font-size: 1.5em;
+            background-color: #333;
+            text-align: center;
+            margin: 0;
+            color: #f39c12;
+        }
+
+        .player-card p {
+            padding: 20px;
+            font-size: 1em;
+            color: #ddd;
+        }
+
+        /* Map Section */
+        #map-section {
+            text-align: center;
+        }
+
+        #player-map {
+            width: 100%;
+            height: 400px;
+            background-color: #111;
+            margin-top: 20px;
+        }
+
+        /* Video Section */
+        video {
+            display: block;
+            margin: 20px auto;
+            max-width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(243, 156, 18, 0.7);
+        }
+
+        /* Fan Zone Section */
+        form {
+            text-align: center;
+        }
+
+        form textarea {
+            width: 80%;
+            height: 150px;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background-color: #222;
+            color: #fff;
+            border: none;
+        }
+
+        #voting-section {
+            margin-top: 50px;
+        }
+
+        #voting-section button {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            font-size: 18px;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .player-card {
+                width: 48%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .player-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <!-- Leaflet.js map kosam -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#featured-players">Players</a></li>
+            <li><a href="#top-matches">Top Matches</a></li>
+            <li><a href="#fan-zone">Fan Zone</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="home">
+        <h1>Cricket Legends Hub</h1>
+        <p>Your go-to station to explore the cricket legends around the world</p>
+        <button id="enter-site">Explore Now</button>
+    </header>
+
+    <!-- Featured Players Section -->
+    <section id="featured-players">
+        <h2>Featured Players</h2>
+        <div class="player-card">
+            <img src="https://media.gettyimages.com/id/97013422/photo/gwalior-india-sachin-tendulkar-of-india-celebrates-his-100-during-the-2nd-odi-between-india-and.jpg?s=612x612&w=0&k=20&c=YEXh4HrPwxLSoIDXc706J8AbzhhUBc3q0n0GuPkVLVQ=" alt="Sachin Tendulkar">
+            <h3>Sachin Tendulkar</h3>
+            <p>Sachin Tendulkar, India - Known as the 'God of Cricket', he holds the record for most runs in Test and ODI cricket.</p>
+        </div>
+        <div class="player-card">
+            <img src="https://media.gettyimages.com/id/157390923/photo/perth-australia-ricky-ponting-of-australia-acknowledges-the-crowd-after-he-was-dimissed.jpg?s=612x612&w=0&k=20&c=EMIPf6WMVvPEztrp8Gk8tLw6S29UXnc3g5AFEcTK0VA=" alt="Ricky Ponting">
+            <h3>Ricky Ponting</h3>
+            <p>Ricky Ponting, Australia - Two-time World Cup winning captain and one of the greatest batsmen of all time.</p>
+        </div>
+        <div class="player-card">
+            <img src="https://media.gettyimages.com/id/1294443/photo/brian-lara-of-the-west-indies-in-action-during-a-tournament-in-sharjah-united-arab-emirates.jpg?s=612x612&w=0&k=20&c=JzWxFFZ2zwOX4yIKsYSkafnq1_XRF8i_9I9bfei-3NE=" alt="Brian Lara">
+            <h3>Brian Lara</h3>
+            <p>Brian Lara, West Indies - Holder of the highest individual score in Test cricket, a true legend of the game.</p>
+        </div>
+        <div class="player-card">
+            <img src="https://media.gettyimages.com/id/1776184004/photo/kolkata-india-virat-kohli-of-india-celebrates-their-century-with-team-mate-ravi-jadeja-to.jpg?s=612x612&w=0&k=20&c=88EDaItb4JbjnZlRApmukNshWWgd_XiP8a2ws5nf9rA=" alt="Virat Kohli">
+            <h3>Virat Kohli</h3>
+            <p>Virat Kohli, India - Modern-day legend known for his aggressive captaincy and remarkable consistency in all formats.</p>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section">
+        <h2>Explore Player Hometowns</h2>
+        <div id="player-map"></div>
+    </section>
+
+    <!-- Top Matches Section -->
+    <section id="top-matches">
+        <h2>Memorable Matches</h2>
+        <video controls>
+            <source src="istockphoto-802912758-640_adpp_is.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>India vs Australia, 2011 World Cup Final</p>
+    </section>
+
+    <!-- Fan Zone Section -->
+    <section id="fan-zone">
+        <h2>Fan Zone</h2>
+        <form id="fan-form">
+            <label for="story">Share Your Favourite Cricket Memory:</label><br>
+            <textarea id="story" placeholder="Type your story here..."></textarea><br>
+            <button type="submit">Submit Story</button>
+        </form>
+
+        <div id="voting-section">
+            <h3>Vote for the Greatest Player of All Time:</h3>
+            <button class="vote-btn" data-player="Sachin Tendulkar">Vote for Sachin Tendulkar</button>
+            <button class="vote-btn" data-player="Ricky Ponting">Vote for Ricky Ponting</button>
+            <p id="vote-results">Vote results: </p>
+        </div>
+    </section>
+
+    <!-- Leaflet.js + GSAP Scroll Animations -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <script>
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.player-card', {
+            opacity: 0,
+            y: 50,
+            duration: 1.5,
+            stagger: 0.3,
+            scrollTrigger: {
+                trigger: '.player-card',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+
+        // Fan Form Submission
+        document.getElementById('fan-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const story = document.getElementById('story').value;
+            if (story) {
+                alert('🔥 Story submitted! Thanks for sharing! 🔥');
+                document.getElementById('story').value = '';
+            }
+        });
+
+        // Voting System
+        let voteResults = { 'Sachin Tendulkar': 0, 'Ricky Ponting': 0 };
+        document.querySelectorAll('.vote-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const player = this.getAttribute('data-player');
+                voteResults[player]++;
+                document.getElementById('vote-results').textContent = `Sachin: ${voteResults['Sachin Tendulkar']}, Ricky: ${voteResults['Ricky Ponting']}`;
+            });
+        });
+
+        // Leaflet Map Setup (Player Hometowns)
+        const map = L.map('player-map').setView([20, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+        // setting up longitudes and latitudes
+        const players = [
+            { name: 'Sachin Tendulkar', lat: 19.0760, lng: 72.8777 },
+            { name: 'Ricky Ponting', lat: -42.8821, lng: 147.3272 },
+            { name: 'Brian Lara', lat: 10.6918, lng: -61.2225 },
+            { name: 'Virat Kohli', lat: 28.7041, lng: 77.1025 }
+        ];
+
+        players.forEach(player => {
+            L.marker([player.lat, player.lng])
+              .addTo(map)
+              .bindPopup(`${player.name}`);
+        });
+    </script>
+</body>
+</html>
